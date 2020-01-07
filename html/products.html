@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>PRODUCTS</title>
+ <link rel="stylesheet" href="bootstrap.min.css"></link>
+ <link rel="stylesheet" href="bootstrap.css"></link>
+
+</head>
+<body>
+ <!-- navigation -->
+   <nav class="navbar navbar-light bg-light">
+    <a href="#" class="navbar-brand">
+      Betty Productos
+    </a>
+   </nav>
+  <!-- contenedor -->
+  <div class="container">
+  <div class=" row pt-5" id="app">
+    <div class="col mb-4">
+      <div class="card ">
+        <div class="card-header">
+          <h4>Add a Product</h4>
+        </div>
+        <form id="product-form" class="card-body">
+          <div class="form-group">
+            <input type="text" id="name" placeholder="nombre del producto " class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="number" step="0.01" id="price" placeholder="Precio del producto " class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="number" id="year" placeholder="Año del producto " class="form-control" min="1900" max="2020" value="2018">
+          </div>
+          <input type="submit" value="Save" class="btn btn-primary btn-block">
+       </form>
+      </div>
+    </div>
+    <div class="col mb-8" id="product-list">
+    </div>
+  </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

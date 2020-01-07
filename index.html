@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>PRODUCTS</title>
+ <link rel="stylesheet" href="bootstrap.min.css"></link>
+ <link rel="stylesheet" href="bootstrap.css"></link>
+
+</head>
+<body>
+ <!-- navigation -->
+   <nav class="navbar navbar-light bg-light">
+    <a href="#" class="navbar-brand">Máquina Registradora</a>
+   </nav>
+  <!-- contenedor -->
+  <div class="container">
+    <div class="mt-3 mb-3" >
+      <div class="d-inline-flex">
+        <button 
+                id="paid" 
+                type="button" 
+                class="btn btn-warning"
+                type="button"
+                data-toggle="modal" 
+                data-target="#paidModal"
+        >
+                Metodo de pago</button>
+        <button id="ticket" type="button" class="btn btn-primary mr-2 ml-2" data-toggle="modal" 
+        data-target="#imprimirModal">Imprimir Ticket</button>
+        <button id="add_product" type="button" class="btn btn-success"> <a class="text-white" href="./html/products.html">Añadir Producto</a></button>
+        <button id="new" type="button" class="btn btn-danger ml-2">Nuevo</button>
+      </div>
+    </div>
+
+    <!-- container -->
+    <div class="row " id="app">
+      <div class="col mb-8 bg-light card ">
+        <div  class="card mt-2 " id="section_datos">
+          
+        </div>
+        <div id="datos_de_tarjeta">
+
+        </div>
+        <div id="details_section">
+            <!-- table -->
+            <table class="table">
+                 <thead>
+                  <tr>
+                    <th class="">Unid</th>
+                    <th class="">Codigo</th>
+                    <th class="">Item</th>
+                    <th class="">Price</th>
+                    <th class="">total</th>
+                  </tr>
+                </thead>
+                <tbody  id="table_products">
+               </tbody> 
+            </table>
+            <div class="d-inline-flex" id="price_content">
+              <h3 class="ml-5 mr-2 text-success">Total</h3>
+              <h2 class="ml-5" id="price_total" id="price_id">0,00$</h2>
+            </div>
+          </div>
+        </div>
+          <!-- INGRESANDO DATOS -->
+          <section class="col  ml-2 card bg-light">
+          <div class="mb-4 pl-1 text-center pr-1 mt-2 ml-2 card"> 
+              <form id="form_section_factura"> 
+                <legend>Ticket</legend>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Ced.</label>
+                  <div class="col-sm-9">
+                    <input type="number"  class="form-control"  placeholder="xxxxxx" id="cedula">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Nombres</label>
+                  <div class="col-sm-9">
+                    <input type="text"  class="form-control"  placeholder="Perencejo" id="name">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Apellido</label>
+                  <div class="col-sm-9">
+                    <input type="text"  class="form-control"  placeholder="Perex" id="lastname">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-3 col-form-label">Direccion</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control"  placeholder="Calle 19,ciudad" id="location">
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Telefono</label>
+                    <div class="col-sm-9">
+                      <input type="number" class="form-control"  placeholder="555-555-5555" id="phone">
+                    </div>
+                  </div>
+                <input type="submit" class="btn btn-primary mb-4" value="Enviar"/>
+            </form>
+            </div> 
+
+            <div id="form_section_products" class="mb-4 pl-1 pr-1 mt-2 ml-2 text-center card">
+              <form id="form_section_products">
+                <fieldset>
+                  <legend>INGRESA</legend>
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-2 col-form-label" >Cant.</label>
+                      <div class="col-sm-10">
+                        <input type="number" class="form-control"  placeholder="1" id="cantidad_imput">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Codigo</label>
+                    <div class="col-sm-10">
+                      <input type="number"  class="form-control"  placeholder="e0012" id="codigo_list">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label" >Item</label>
+                    <div class="col-sm-10">
+                      <input type="text"  class="form-control"  placeholder="Apple" id="item_name">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control"  placeholder="0.00"  id="price_items">
+                    </div>
+                  </div>
+                  </div>
+                  <input type="submit" class="btn btn-primary mb-4"  value="Agregar" id="addProduct"/>
+              </form>
+            </div> 
+          </section>
+    </div>
+<!-- Modales -->
+<div class="modal fade" 
+     id="paidModal"
+     tabindex="-1" 
+     role="dialog" 
+     aria-labelledby="exampleModalLabel" 
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Metodo de pago</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <button class="btn btn-warning data-toggle="modal" data-target="#debitModal" type="button"
+            data-toggle="modal" 
+          >Tarjeta de Debito</button>
+            <button class="btn btn-success data-toggle="modal" data-target="#creditoModal" type="button"
+            data-toggle="modal" >Tarjeta de Credito</button>
+            <button class="btn btn-primary data-toggle="modal" data-target="#efectivoModal"type="button"
+            data-toggle="modal" >Efectivo</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger">Guardar</button>
+          </div>
+        </div>
+  </div>
+</div>
+<!-- ticket -->
+<div class="modal fade" 
+     id="imprimirModal"
+     tabindex="-1" 
+     role="dialog" 
+     aria-labelledby="exampleModalLabel" 
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ticket N°0001</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modal_write">
+      </div>
+      <table  class="modal-body table">
+        <thead>
+          <tr>
+            <th class="">Unid</th>
+            <th class="">Codigo</th>
+            <th class="">Item</th>
+            <th class="">Price</th>
+            <th class="">total</th>
+          </tr>
+        </thead>
+        <tbody id="modal_write_tabla">
+
+        </tbody>
+      </table>
+      <div class="modal-footer">
+        <p id="modal_write_total" class="pr-3"></p>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger">Imprimir</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modales del modal -->
+    <div class="modal fade" 
+    id="debitModal"
+    tabindex="-1" 
+    role="dialog" 
+    aria-labelledby="Debito" 
+    aria-hidden="true">
+    <div class="modal-body modal-dialog modal-content modal_debit_card">
+      <form id="modal_debit_card">
+       <div class="form-group row">
+         <label class="col-sm-3 col-form-label">Cedula</label>
+         <div class="col-sm-9">
+           <input type="number" class="form-control"  placeholder="555-555-5555" id="ced_debito">
+         </div>
+       </div>
+       <div class="input-group mb-3">
+           <div class="input-group-prepend">
+               <button class="btn btn-outline-secondary" type="button">Cuenta</button>
+             </div>
+           <select class="custom-select" id="count_debito">
+             <option selected>Tipo de cuenta</option>
+             <option value="1">Corriente</option>
+             <option value="2">Ahorro</option>
+           </select>
+       </div>
+       <div class="form-group row">
+         <label for="staticEmail" class="col-sm-3 col-form-label">Precio</label>
+         <div class="col-sm-9">
+           <input type="number" class="form-control" id="mount_ticket" placeholder="555-555-5555">
+         </div>
+       </div>
+       <div class="form-group row">
+           <label for="staticEmail" class="col-sm-3 col-form-label">Numero de ticket</label>
+           <div class="col-sm-9">
+             <input type="number" class="form-control" id="number_ticket" placeholder="555-555-5555">
+           </div>
+         </div>
+         <input type="submit" class="btn btn-danger" value="Guardar"/>
+      </form>
+     </div>  
+    </div>
+<!-- credito -->
+    <div class="modal fade" 
+    id="creditoModal"
+    tabindex="-1" 
+    role="dialog" 
+    aria-labelledby="Credito" 
+    aria-hidden="true">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="Credito">Tarjeta de Credito <img src="img/credit-card.png"/ width="32px" height="32px"></h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+      <form>
+       <div class="form-group row">
+         <label for="staticEmail" class="col-sm-3 col-form-label">Cedula</label>
+         <div class="col-sm-9">
+           <input type="number" class="form-control"  placeholder="555-555-5555">
+         </div>
+       </div>
+       <div class="form-group row">
+         <label for="staticEmail" class="col-sm-3 col-form-label">Precio</label>
+         <div class="col-sm-9">
+           <input type="number" class="form-control"  placeholder="555-555-5555">
+         </div>
+       </div>
+      </form>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+       <button type="button" class="btn btn-danger">Guardar</button>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- efectivo -->
+<div class="modal fade" 
+id="efectivoModal"
+tabindex="-1" 
+role="dialog" 
+aria-labelledby="Efectivo" 
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+ <div class="modal-header">
+   <h5 class="modal-title" id="Efectivo">Efectivo<img src="img/wallet.png"/></h5>
+   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+ <div class="modal-body">
+  <form>
+   <div class="form-group row">
+     <label for="staticEmail" class="col-sm-3 col-form-label">Monto</label>
+     <div class="col-sm-9">
+       <input type="number" class="form-control"  placeholder="15$">
+     </div>
+   </div>
+  </form>
+ </div>
+ <div class="modal-footer">
+   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+   <button type="button" class="btn btn-danger">Guardar</button>
+ </div>
+</div>
+</div>
+</div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+</body>
+</html>
